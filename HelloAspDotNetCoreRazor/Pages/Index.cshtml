@@ -4,6 +4,12 @@
     ViewData["Title"] = "Home page";
 }
 
+<style>
+    td {
+        padding: 2.5px 5px;
+    }
+</style>
+
 <form method="post">
     <table>
         <thead>
@@ -16,6 +22,8 @@
                 <tr>
                     <td>@customer.Id</td>
                     <td>@customer.Name</td>
+                    <td><a asp-page="./Edit" asp-route-id="@customer.Id">Edit</a></td>
+                    <td><button type="submit" asp-page-handler="delete" asp-route-id="@customer.Id">Delete</button></td>
                 </tr>
             }
         </tbody>
