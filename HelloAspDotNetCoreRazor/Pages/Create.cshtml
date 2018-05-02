@@ -1,0 +1,28 @@
+﻿@page
+@model HelloAspDotNetCoreRazor.Pages.CreateModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<style>
+.form__section {
+    margin: 10px 0;
+}
+</style>
+
+<h2>Create</h2>
+
+<form method="post">
+    <div asp-validation-summary="All"></div>
+    <div class="form__section">
+        <label for="form__customer-name">Customer Name:</label>
+        <input type="text" id="form__customer-name" asp-for="Customer.Name">
+    </div>
+    <div class="form__section">
+        <input type="submit" value="Save Customer">
+    </div>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
