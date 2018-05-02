@@ -1,12 +1,23 @@
-﻿@page
+﻿@page ""
 @model HelloAspDotNetCoreRazor.Pages.CreateModel
 @{
     ViewData["Title"] = "Create";
 }
 
 <style>
+form {
+    width: 250px;
+}
 .form__section {
     margin: 10px 0;
+    display: flex;
+}
+.form__section * {
+    flex: 1;
+}
+.form__section label {
+text-align: right;
+    margin-right: 10px;
 }
 </style>
 
@@ -14,10 +25,22 @@
 
 <form method="post">
     <div asp-validation-summary="All"></div>
+    <!-- Name -->
     <div class="form__section">
-        <label for="form__customer-name">Customer Name:</label>
-        <input type="text" id="form__customer-name" asp-for="Customer.Name">
+        <label for="form__customer-name">Name:</label>
+        <input id="form__customer-name" asp-for="Customer.Name">
     </div>
+    <!-- Email -->
+    <div class="form__section">
+        <label for="form__customer-email">Email:</label>
+        <input id="form__customer-email" asp-for="Customer.Email">
+    </div>
+    <!-- Birth Year -->
+    <div class="form__section">
+        <label for="form__customer-email">Birth Year:</label>
+        <input id="form__customer-birth-year" asp-for="Customer.BirthYear">
+    </div>
+    <!-- Submit Button -->
     <div class="form__section">
         <input type="submit" value="Save Customer">
     </div>

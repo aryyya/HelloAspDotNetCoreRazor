@@ -2,14 +2,27 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
+
+    int GetAge(int birthYear)
+    {
+        return 2018 - birthYear;
+    }
 }
 
 <style>
-    td {
+    table {
+        border: 2px solid #eee;
+    }
+    td,
+    th {
         padding: 5px 10px;
     }
     tr:not(:last-child) {
         border-bottom: 1px solid #eee;
+    }
+    tr:nth-child(even),
+    thead {
+        background-color: #eee;
     }
 </style>
 
@@ -20,6 +33,10 @@
         <thead>
             <th>ID</th>
             <th>Name</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th>Edit</th>
+            <th>Delete</th>
         </thead>
         <tbody>
             @foreach (var customer in Model.Customers)
@@ -27,6 +44,8 @@
                 <tr>
                     <td>@customer.Id</td>
                     <td>@customer.Name</td>
+                    <td>@customer.Email</td>
+                    <td>@GetAge(customer.BirthYear)</td>
                     <td><a asp-page="./Edit" asp-route-id="@customer.Id">Edit</a></td>
                     <td><button type="submit" asp-page-handler="delete" asp-route-id="@customer.Id">Delete</button></td>
                 </tr>

@@ -4,20 +4,47 @@
     ViewData["Title"] = "Edit";
 }
 
+<style>
+form {
+    width: 250px;
+}
+.form__section {
+    margin: 10px 0;
+    display: flex;
+}
+.form__section * {
+    flex: 1;
+}
+.form__section label {
+text-align: right;
+    margin-right: 10px;
+}
+</style>
+
 <h2>Edit Customer - @Model.Customer.Id</h2>
 
 <form method="post">
     <div asp-validation-summary="All"></div>
+    <!-- Id -->
     <input asp-for="Customer.Id" type="hidden">
-    <div>
-        <label asp-for="Customer.Name"></label>
-        <div>
-            <input asp-for="Customer.Name">
-            <span asp-validation-for="Customer.Name"></span>
-        </div>
+    <!-- Name -->
+    <div class="form__section">
+        <label for="form__customer-name">Name:</label>
+        <input id="form__customer-name" asp-for="Customer.Name">
     </div>
-    <div>
-        <input type="submit">
+    <!-- Email -->
+    <div class="form__section">
+        <label for="form__customer-email">Email:</label>
+        <input id="form__customer-email" asp-for="Customer.Email">
+    </div>
+    <!-- Birth Year -->
+    <div class="form__section">
+        <label for="form__customer-email">Birth Year:</label>
+        <input id="form__customer-birth-year" asp-for="Customer.BirthYear">
+    </div>
+    <!-- Submit Button -->
+    <div class="form__section">
+        <input type="submit" value="Save Customer">
     </div>
 </form>
 

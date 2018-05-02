@@ -36,8 +36,7 @@ namespace HelloAspDotNetCoreRazor.Pages
             _db.Customers.Add(Customer);
             await _db.SaveChangesAsync();
 
-            Message = $"Customer {Customer.Name} added.";
-            Logger.LogCritical(Message);
+            Logger.LogCritical($"Customer saved: {Customer}");
 
             return RedirectToPage("/index");
         }
