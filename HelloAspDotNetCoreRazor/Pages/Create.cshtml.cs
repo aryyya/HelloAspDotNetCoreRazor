@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Logging;
 
 namespace HelloAspDotNetCoreRazor.Pages
 {
@@ -11,9 +12,12 @@ namespace HelloAspDotNetCoreRazor.Pages
     {
         private readonly AppDbContext _db;
 
-        public CreateModel(AppDbContext db)
+        private ILogger<CreateModel> Logger;
+
+        public CreateModel(AppDbContext db, ILogger<CreateModel> logger)
         {
             _db = db;
+            Logger = logger;
         }
 
         [TempData]
@@ -33,6 +37,7 @@ namespace HelloAspDotNetCoreRazor.Pages
             await _db.SaveChangesAsync();
 
             Message = $"Customer {Customer.Name} added.";
+            Logger.LogCritical(Message);
 
             return RedirectToPage("/index");
         }
